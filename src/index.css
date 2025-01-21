@@ -1,0 +1,122 @@
+/* src/index.css */
+
+/* Стили для body */
+body {
+  background-color: #1a1a1a;
+  /* Темный фон */
+  color: white;
+  /* Белый текст */
+  margin: 0;
+  /* Убираем отступы у body */
+  padding: 0;
+  /* Убираем отступы у body */
+  display: flex;
+  justify-content: center;
+  /* Центрируем по горизонтали */
+  align-items: center;
+  /* Центрируем по вертикали */
+  overflow-x: hidden;
+  /* Это предотвратит горизонтальный скролл, если он есть */
+  padding-top: 100px;
+  /* Отступ для фиксированного navbar */
+}
+
+/* Центрирование контента на странице */
+#root {
+  width: 100%;
+  /* Максимальная ширина, чтобы контент не растягивался слишком сильно */
+  text-align: center;
+  /* Выравнивание текста по центру */
+  padding: 20px;
+}
+
+/* Стили для навигации */
+nav {
+  margin-bottom: 30px;
+}
+
+/* Стили для списка навигации */
+nav ul {
+  list-style-type: none;
+  /* Убираем маркеры */
+  padding: 0;
+  /* Убираем внутренние отступы */
+}
+
+/* Стили для элементов навигации */
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+/* Стили для ссылок навигации */
+nav ul li a {
+  color: white;
+  /* Белый текст */
+  text-decoration: none;
+  /* Убираем подчеркивание */
+  font-size: 18px;
+  /* Размер шрифта */
+  padding: 10px;
+  /* Отступы внутри ссылок */
+  display: inline-block;
+  /* Это позволяет использовать padding корректно */
+}
+
+nav ul li a:hover {
+  background-color: #444;
+  /* Фон при наведении */
+  border-radius: 5px;
+  /* Скругленные углы */
+}
+
+/* Дополнительные стили для фиксированного навбара */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  /* Фон навбара */
+  color: white;
+  padding: 10px 0;
+  z-index: 1000;
+  /* Панель будет поверх других элементов */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 12px;
+}
+
+.navbar-links li a:hover {
+  background-color: #575757;
+  /* Изменение фона при наведении */
+  border-radius: 5px;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
