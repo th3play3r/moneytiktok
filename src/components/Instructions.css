@@ -123,23 +123,39 @@
     cursor: pointer;
 }
 
-/* Мобильная адаптивность */
+/* 🌟 Адаптивность для телефонов и планшетов */
+@media (max-width: 1024px) {
+    .instructions-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+}
+
 @media (max-width: 768px) {
     .instruction-step {
-        width: 150px;
-        height: 150px;
+        width: 90%;
+        /* Теперь шаги растягиваются по ширине экрана */
+        height: auto;
+        padding: 20px;
     }
 
     .instruction-img {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
     }
 
     .instruction-text {
-        font-size: 0.9rem;
+        font-size: 1rem;
+        text-align: center;
     }
 
-    .instructions-section {
-        padding: 20px;
+    .arrow {
+        font-size: 1.5rem;
+        margin: 15px 0;
+    }
+
+    .instruction-note {
+        font-size: 0.9rem;
     }
 }

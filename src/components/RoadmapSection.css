@@ -6,7 +6,7 @@
     text-align: center;
     padding: 50px;
     border-radius: 20px;
-    box-shadow: inset 1px 20px 20px 20px rgba(0, 0, 0, 0.7)
+    box-shadow: inset 1px 20px 20px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Линия дорожной карты */
@@ -35,35 +35,28 @@
 .roadmap-sticker {
     position: absolute;
     top: -15px;
-    /* Располагаем иконки выше линии */
     font-size: 35px;
-    /* Размер иконок */
     color: white;
     transform: translateX(-50%);
-    /* Центрируем иконки */
 }
 
 /* Иконки для каждого состояния */
 .roadmap-step.completed .roadmap-sticker .fa-check {
     color: #25D500;
-    /* Зеленая галочка для завершённого шага */
 }
 
 .roadmap-step.in-progress .roadmap-sticker .fa-clock {
     color: #FFD700;
-    /* Жёлтые часики для шага в процессе */
 }
 
 .roadmap-step.future .roadmap-sticker .fa-hourglass-start {
     color: #999;
-    /* Серые песочные часы для будущих шагов */
 }
 
 /* Подписи под иконками */
 .roadmap-label {
     position: absolute;
     top: 20px;
-    /* Подписи чуть ниже иконок */
     width: 120px;
     font-size: 20px;
     font-weight: bold;
@@ -76,12 +69,37 @@
 /* Анимация при наведении */
 .roadmap-step:hover .roadmap-sticker {
     transform: translateX(-50%) scale(1.5);
-    /* Увеличиваем иконку при наведении */
     transition: transform 0.3s ease;
 }
 
 .roadmap-step:hover .roadmap-label {
     transform: translateX(-50%) translateY(10px) scale(1.1);
-    /* Увеличиваем иконку при наведении */
     transition: transform 0.3s ease;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+    .roadmap-section {
+        padding: 30px;
+    }
+
+    .roadmap-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .roadmap-line {
+        height: 8px;
+        margin: 30px 0;
+    }
+
+    .roadmap-sticker {
+        font-size: 25px;
+        top: -10px;
+    }
+
+    .roadmap-label {
+        font-size: 16px;
+        top: 15px;
+        width: 100px;
+    }
 }

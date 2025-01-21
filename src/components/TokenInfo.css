@@ -1,3 +1,4 @@
+/* Секция информации о токене */
 .token-info {
     text-align: center;
     padding: 50px 20px;
@@ -15,7 +16,6 @@
     text-transform: uppercase;
     font-weight: bold;
     color: #ffd700;
-    /* Золотой цвет */
 }
 
 .token-info p {
@@ -27,4 +27,25 @@
     font-size: 2rem;
     margin-top: 20px;
     color: #ff4500;
+}
+
+/* 📱 Адаптивность для секции информации о токене */
+@media (max-width: 768px) {
+    .token-info {
+        padding: 30px 15px;
+        margin: 20px auto;
+        max-width: 90%;
+    }
+
+    .token-info h2 {
+        font-size: 2rem;
+    }
+
+    .token-info p {
+        font-size: 1rem;
+    }
+
+    .token-info h3 {
+        font-size: 1.5rem;
+    }
 }

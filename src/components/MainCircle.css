@@ -30,7 +30,6 @@
     width: min(150vw, 140vh);
     height: min(150vw, 160vh);
     transform: translate(-5vh, -14vh);
-
 }
 
 .token-chart {
@@ -44,9 +43,7 @@
 /* Главный круг */
 .main-circle {
     fill: radial-gradient(circle, #888, #333);
-    /* Матовый градиент */
     filter: drop-shadow(0px 0px 6px rgba(100, 100, 100, 0.3));
-    /* Мягкая тень */
     stroke: none;
 }
 
@@ -55,20 +52,16 @@
     font-size: 38px;
     font-weight: bold;
     fill: #b0b0b0;
-    /* Матовый светло-серый */
     stroke: #666;
-    /* Матовый темно-серый контур */
     stroke-width: 1px;
     text-anchor: middle;
     dominant-baseline: middle;
     font-family: 'Poppins', sans-serif;
-    /* Применение шрифта Poppins */
 }
 
 /* Линии */
 .token-line {
     stroke: rgba(150, 150, 150, 0.6);
-    /* Более матовый серый */
     stroke-width: 3;
     stroke-linecap: round;
     opacity: 0.8;
@@ -78,12 +71,10 @@
 /* Малые круги */
 .sub-circle {
     fill: radial-gradient(circle, #555, #333);
-    /* Матовый градиент */
     cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 2;
     filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3));
-    /* Мягкая тень */
 }
 
 .sub-circle:hover {
@@ -107,11 +98,73 @@
     font-size: 34px;
     fill: #b0b0b0;
     filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7));
-    /* Белое свечение */
     font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
     transform: translateY(18px);
     font-family: 'Poppins', sans-serif;
-    /* Применение шрифта Poppins */
+}
+
+/* Адаптация для мобильных устройств (макс. ширина 768px) */
+@media (max-width: 768px) {
+    .tokenization-section {
+        padding: 5%;
+        width: 100%;
+        height: auto;
+        background-size: 100% auto;
+    }
+
+    .responsive-svg {
+        width: 100%;
+        height: auto;
+        transform: translate(0, 0);
+    }
+
+    .token-chart {
+        margin-top: 30px;
+    }
+
+    .main-text {
+        font-size: 30px;
+    }
+
+    .token-label {
+        font-size: 22px;
+    }
+
+    .token-percent {
+        font-size: 28px;
+    }
+}
+
+/* Адаптация для очень маленьких экранов (макс. ширина 480px) */
+@media (max-width: 480px) {
+    .tokenization-section {
+        padding: 4%;
+        width: 100%;
+        height: auto;
+        background-size: 110% auto;
+    }
+
+    .responsive-svg {
+        width: 100%;
+        height: auto;
+        transform: translate(0, 0);
+    }
+
+    .token-chart {
+        margin-top: 20px;
+    }
+
+    .main-text {
+        font-size: 24px;
+    }
+
+    .token-label {
+        font-size: 18px;
+    }
+
+    .token-percent {
+        font-size: 22px;
+    }
 }

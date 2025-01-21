@@ -2,8 +2,10 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  max-width: 1200px;
 }
 
+/* Логотип */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -19,6 +21,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Анимация вращения логотипа */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,10 +38,40 @@
   }
 }
 
+/* Карточка */
 .card {
   padding: 2em;
+  background: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  max-width: 600px;
+  margin: 20px auto;
 }
 
+/* Текст документации */
 .read-the-docs {
   color: #888;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* 🌟 Адаптивность для телефонов */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .logo {
+    height: 4em;
+    padding: 1em;
+  }
+
+  .card {
+    padding: 1.5em;
+    max-width: 90%;
+  }
+
+  .read-the-docs {
+    font-size: 0.9rem;
+  }
 }

@@ -21,20 +21,39 @@ html {
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    padding: 20px;
+    /* Добавил отступ для мобильных */
 }
 
 .home-container h4 {
     font-size: 3rem;
-    /* Увеличенный размер */
     font-weight: bold;
     text-align: center;
     color: #ffd700;
-    /* Золотой цвет для акцента */
     text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5),
         -3px -3px 10px rgba(0, 0, 0, 0.7);
     margin: 40px 0;
     letter-spacing: 2px;
-    /* Добавляет пространство между буквами */
     font-variant: small-caps;
-    /* Декоративное написание */
+}
+
+/* 🌟 Адаптивность для телефонов */
+@media (max-width: 768px) {
+    body {
+        background-size: cover;
+        background-attachment: scroll;
+        /* Отключает фиксированный фон на телефонах */
+    }
+
+    .home-container {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .home-container h4 {
+        font-size: 2rem;
+        /* Уменьшаем размер заголовка */
+        margin: 20px 0;
+        letter-spacing: 1px;
+    }
 }
