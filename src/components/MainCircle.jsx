@@ -19,14 +19,16 @@ const MainCircle = () => {
     useEffect(() => {
         const updateSize = () => {
             const width = window.innerWidth;
-            if (width < 768) {
-                setSvgSize(700);
-            } else if (width < 1024) {
-                setSvgSize(1000);
-            } else {
-                setSvgSize(1350);
-            }
+            let newSize = 1350;
+
+            if (width < 768) newSize = 700;
+            else if (width < 1024) newSize = 1000;
+
+            setSvgSize(newSize);
+            document.documentElement.style.setProperty('--svg-size', `${newSize}px`);
+            document.documentElement.style.setProperty('--main-circle-radius', `${newSize * 0.1}px`);
         };
+
         updateSize();
         window.addEventListener("resize", updateSize);
         return () => window.removeEventListener("resize", updateSize);
@@ -121,24 +123,10 @@ const MainCircle = () => {
                                     animate={{ scale: 1 }}
                                     transition={{ duration: 0.5, delay: 0.6 }}
                                 />
-                                <motion.text
-                                    x={endX}
-                                    y={endY}
-                                    className="token-label"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.8, delay: 0.7 }}
-                                >
+                                <motion.text x={endX} y={endY} className="token-label">
                                     {token.name}
                                 </motion.text>
-                                <motion.text
-                                    x={endX}
-                                    y={endY + 30}
-                                    className="token-percent"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.8, delay: 0.7 }}
-                                >
+                                <motion.text x={endX} y={endY + 30} className="token-percent">
                                     {token.percent}%
                                 </motion.text>
                             </React.Fragment>

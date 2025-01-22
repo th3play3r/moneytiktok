@@ -1,43 +1,50 @@
-/* Подключение шрифта из Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+:root {
+    --svg-size: min(180vw, 180vh);
+    --main-circle-radius: calc(var(--svg-size) * 0.08);
+}
 
 .tokenization-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 2vw;
     background-color: #2c2c2c;
     padding: 2%;
     border-radius: 10px;
     margin-top: 2vh;
     max-width: 100%;
-    width: min(150vw, 150vh);
-    height: min(150vw, 150vh);
+    width: var(--svg-size);
+    height: var(--svg-size);
     background-image: url('/assets/likes-bg.jpeg');
-    background-size: 65% auto;
-    background-position: center 20%;
+    background-size: contain;
+    background-position: center;
     background-attachment: fixed;
+    background-repeat: no-repeat;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 
-    /* Градиентная маска для плавного перехода */
-    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 30%, rgba(0, 0, 0, 0) 100%);
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 60%);
+    /* Градиентная маска */
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 70%);
 }
 
+/* SVG-обёртка */
 .responsive-svg {
-    width: min(150vw, 140vh);
-    height: min(150vw, 160vh);
-    transform: translate(-5vh, -14vh);
+    width: var(--svg-size);
+    height: var(--svg-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Контейнер для токенов */
 .token-chart {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
     position: relative;
+    overflow: visible;
 }
 
 /* Главный круг */
@@ -45,11 +52,13 @@
     fill: radial-gradient(circle, #888, #333);
     filter: drop-shadow(0px 0px 6px rgba(100, 100, 100, 0.3));
     stroke: none;
+    r: var(--main-circle-radius);
+    overflow: visible;
 }
 
-/* Основной текст */
+/* Текст внутри главного круга */
 .main-text {
-    font-size: 38px;
+    font-size: calc(var(--svg-size) * 0.025);
     font-weight: bold;
     fill: #b0b0b0;
     stroke: #666;
@@ -59,13 +68,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Линии */
+/* Линии соединения */
 .token-line {
     stroke: rgba(150, 150, 150, 0.6);
     stroke-width: 3;
     stroke-linecap: round;
     opacity: 0.8;
     transition: opacity 1s ease-in-out;
+    overflow: visible;
 }
 
 /* Малые круги */
@@ -75,15 +85,17 @@
     transition: transform 0.3s ease;
     z-index: 2;
     filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3));
+    r: calc(var(--svg-size) * 0.04);
+    overflow: visible;
 }
 
 .sub-circle:hover {
     transform: scale(1.1);
 }
 
-/* Текст в малых кругах */
+/* Текст внутри малых кругов */
 .token-label {
-    font-size: 28px;
+    font-size: calc(var(--svg-size) * 0.02);
     fill: #b0b0b0;
     stroke: #666;
     stroke-width: 0.5px;
@@ -93,78 +105,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Процентное значение с белым свечением */
+/* Процентное значение */
 .token-percent {
-    font-size: 34px;
+    font-size: calc(var(--svg-size) * 0.022);
     fill: #b0b0b0;
     filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7));
     font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
-    transform: translateY(18px);
     font-family: 'Poppins', sans-serif;
-}
-
-/* Адаптация для мобильных устройств (макс. ширина 768px) */
-@media (max-width: 768px) {
-    .tokenization-section {
-        padding: 5%;
-        width: 100%;
-        height: auto;
-        background-size: 100% auto;
-    }
-
-    .responsive-svg {
-        width: 100%;
-        height: auto;
-        transform: translate(0, 0);
-    }
-
-    .token-chart {
-        margin-top: 30px;
-    }
-
-    .main-text {
-        font-size: 30px;
-    }
-
-    .token-label {
-        font-size: 22px;
-    }
-
-    .token-percent {
-        font-size: 28px;
-    }
-}
-
-/* Адаптация для очень маленьких экранов (макс. ширина 480px) */
-@media (max-width: 480px) {
-    .tokenization-section {
-        padding: 4%;
-        width: 100%;
-        height: auto;
-        background-size: 110% auto;
-    }
-
-    .responsive-svg {
-        width: 100%;
-        height: auto;
-        transform: translate(0, 0);
-    }
-
-    .token-chart {
-        margin-top: 20px;
-    }
-
-    .main-text {
-        font-size: 24px;
-    }
-
-    .token-label {
-        font-size: 18px;
-    }
-
-    .token-percent {
-        font-size: 22px;
-    }
 }

@@ -34,7 +34,7 @@ const Home = () => {
                 <div className="col-12">
                     <h4 className="text-warning text-uppercase fw-bold">Токеномика $MTOK:</h4>
                 </div>
-                <div className="col-12 col-md-8 offset-md-2">
+                <div class="w-100 d-flex justify-content-center align-items-center">
                     <MainCircle />
                 </div>
             </div>
