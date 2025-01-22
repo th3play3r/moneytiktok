@@ -16,15 +16,10 @@ html {
 /* Контейнер главной страницы */
 .home-container {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
     padding: 20px;
-    /* Добавил отступ для мобильных */
 }
 
+/* Заголовок */
 .home-container h4 {
     font-size: 3rem;
     font-weight: bold;
@@ -37,23 +32,8 @@ html {
     font-variant: small-caps;
 }
 
-/* 🌟 Адаптивность для телефонов */
-@media (max-width: 768px) {
-    body {
-        background-size: cover;
-        background-attachment: scroll;
-        /* Отключает фиксированный фон на телефонах */
-    }
-
-    .home-container {
-        padding: 10px;
-        text-align: center;
-    }
-
-    .home-container h4 {
-        font-size: 2rem;
-        /* Уменьшаем размер заголовка */
-        margin: 20px 0;
-        letter-spacing: 1px;
-    }
+/* Используем Bootstrap для адаптивности */
+.container {
+    max-width: 1200px;
+    /* Центрирование контента */
 }

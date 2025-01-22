@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import "./MainCircle.css"; // Подключаем стили
-import tiktokLogo from "/assets/tiktok-logo.png"; // Путь к изображению TikTok
+import "./MainCircle.css";
+import tiktokLogo from "/assets/tiktok-logo.png";
 
 const TOKEN_DISTRIBUTION = [
     { name: "Майнеры", percent: 65 },
@@ -14,21 +14,41 @@ const TOKEN_DISTRIBUTION = [
 ];
 
 const MainCircle = () => {
-    const centerX = 675;
-    const centerY = 675;
-    const mainRadius = 180;
+    const [svgSize, setSvgSize] = useState(1350);
+
+    useEffect(() => {
+        const updateSize = () => {
+            const width = window.innerWidth;
+            if (width < 768) {
+                setSvgSize(700);
+            } else if (width < 1024) {
+                setSvgSize(1000);
+            } else {
+                setSvgSize(1350);
+            }
+        };
+        updateSize();
+        window.addEventListener("resize", updateSize);
+        return () => window.removeEventListener("resize", updateSize);
+    }, []);
+
+    const centerX = svgSize / 2;
+    const centerY = svgSize / 2;
+    const mainRadius = svgSize * 0.13;
     const connectionOffset = mainRadius + 8;
 
     return (
         <div className="tokenization-section">
             <div className="token-chart">
-                <svg viewBox="0 0 1350 1350" className="responsive-svg">
+                <svg
+                    viewBox={`0 0 ${svgSize} ${svgSize}`}
+                    width="100%"
+                    height="auto"
+                    preserveAspectRatio="xMidYMid meet"
+                    className="responsive-svg"
+                >
                     <defs>
                         <radialGradient id="mainGradient" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stopColor="#333" />
-                            <stop offset="100%" stopColor="black" />
-                        </radialGradient>
-                        <radialGradient id="subGradient" cx="50%" cy="50%" r="50%">
                             <stop offset="0%" stopColor="#333" />
                             <stop offset="100%" stopColor="black" />
                         </radialGradient>
@@ -49,38 +69,35 @@ const MainCircle = () => {
 
                     <image
                         href={tiktokLogo}
-                        x={centerX - mainRadius * 0.95}  // Центрируем по оси X с учетом ширины
-                        y={centerY - mainRadius * 0.95}  // Центрируем по оси Y с учетом высоты
-                        width={mainRadius * 1.9}         // Ширина картинки остается 1.9 от радиуса
-                        height={mainRadius * 1.9}        // Высота картинки остается 1.9 от радиуса
+                        x={centerX - mainRadius * 0.95}
+                        y={centerY - mainRadius * 0.95}
+                        width={mainRadius * 1.9}
+                        height={mainRadius * 1.9}
                         className="main-image"
                     />
 
                     <motion.text
                         x={centerX}
-                        y={centerY - 10}  /* Немного сдвигаем для лучшего выравнивания */
+                        y={centerY - 10}
                         className="main-text"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
                     >
                         40 000 000 000
-                        <tspan x={centerX} y={centerY + 30} className="main-text" style={{ fontFamily: 'Roboto, sans-serif', fontWeight: '700' }}>
+                        <tspan x={centerX} y={centerY + 30} className="main-text">
                             МТОК
                         </tspan>
                     </motion.text>
 
-                    {/* Для остальных текстов добавьте аналогичное изменение стилей */}
-
-
                     {TOKEN_DISTRIBUTION.map((token, index) => {
                         const angle = ((index / TOKEN_DISTRIBUTION.length) * Math.PI * 2);
-                        const radiusX = 130;
-                        const radiusY = 110;
+                        const radiusX = svgSize * 0.08;
+                        const radiusY = svgSize * 0.06;
                         const startX = centerX + Math.cos(angle) * connectionOffset;
                         const startY = centerY + Math.sin(angle) * connectionOffset;
-                        const endX = centerX + Math.cos(angle) * (connectionOffset + 150 * 1.5);
-                        const endY = centerY + Math.sin(angle) * (connectionOffset + 150 * 1.5);
+                        const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.1);
+                        const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.1);
 
                         return (
                             <React.Fragment key={token.name}>
