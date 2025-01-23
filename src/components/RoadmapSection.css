@@ -53,10 +53,10 @@
     color: #999;
 }
 
-/* Подписи под иконками */
+/* Подписи под иконками (скрыты по умолчанию) */
 .roadmap-label {
     position: absolute;
-    top: 20px;
+    top: 40px;
     width: 120px;
     font-size: 20px;
     font-weight: bold;
@@ -64,6 +64,9 @@
     transform: translateX(-50%);
     color: white;
     font-variant: small-caps;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
 }
 
 /* Анимация при наведении */
@@ -73,8 +76,9 @@
 }
 
 .roadmap-step:hover .roadmap-label {
-    transform: translateX(-50%) translateY(10px) scale(1.1);
-    transition: transform 0.3s ease;
+    opacity: 1;
+    transform: translateX(-50%) translateY(5px) scale(1.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Адаптация под мобильные устройства */
@@ -99,7 +103,7 @@
 
     .roadmap-label {
         font-size: 16px;
-        top: 15px;
+        top: 25px;
         width: 100px;
     }
 }

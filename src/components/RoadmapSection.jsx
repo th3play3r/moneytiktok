@@ -29,7 +29,7 @@ const RoadmapSection = () => {
                                 {step.status === "future" && <i className="fas fa-hourglass-start"></i>}
                             </div>
                             {/* Подпись с уменьшением размера шрифта и меньшими отступами */}
-                            <div className="roadmap-label position-absolute" style={{ left: step.position, top: '20px', transform: 'translateX(-50%)', fontSize: '0.85rem' }}>
+                            <div className="roadmap-label position-absolute">
                                 {step.title}
                             </div>
                         </div>
