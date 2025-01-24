@@ -1,23 +1,18 @@
 :root {
-    --svg-size: min(180vw, 180vh);
-    --main-circle-radius: calc(var(--svg-size) * 0.08);
+    --svg-size: 100%;
+    --main-circle-radius: 13%;
 }
 
 .tokenization-section {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2vw;
     background-color: #2c2c2c;
     padding: 2%;
     border-radius: 10px;
     margin-top: 2vh;
-    max-width: 100%;
-    width: var(--svg-size);
-    height: var(--svg-size);
     background-image: url('/assets/likes-bg.jpeg');
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -29,7 +24,6 @@
     mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 70%);
 }
 
-/* SVG-обёртка */
 .responsive-svg {
     width: var(--svg-size);
     height: var(--svg-size);
@@ -38,7 +32,6 @@
     align-items: center;
 }
 
-/* Контейнер для токенов */
 .token-chart {
     display: flex;
     justify-content: center;
@@ -47,7 +40,6 @@
     overflow: visible;
 }
 
-/* Главный круг */
 .main-circle {
     fill: radial-gradient(circle, #888, #333);
     filter: drop-shadow(0px 0px 6px rgba(100, 100, 100, 0.3));
@@ -56,9 +48,8 @@
     overflow: visible;
 }
 
-/* Текст внутри главного круга */
 .main-text {
-    font-size: calc(var(--svg-size) * 0.025);
+    font-size: clamp(16px, 3vw, 60px);
     font-weight: bold;
     fill: #b0b0b0;
     stroke: #666;
@@ -68,7 +59,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Линии соединения */
 .token-line {
     stroke: rgba(150, 150, 150, 0.6);
     stroke-width: 3;
@@ -78,14 +68,13 @@
     overflow: visible;
 }
 
-/* Малые круги */
 .sub-circle {
     fill: radial-gradient(circle, #555, #333);
     cursor: pointer;
     transition: transform 0.3s ease;
     z-index: 2;
     filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3));
-    r: calc(var(--svg-size) * 0.04);
+    r: 5%;
     overflow: visible;
 }
 
@@ -93,9 +82,8 @@
     transform: scale(1.1);
 }
 
-/* Текст внутри малых кругов */
 .token-label {
-    font-size: calc(var(--svg-size) * 0.02);
+    font-size: clamp(12px, 2vw, 40px);
     fill: #b0b0b0;
     stroke: #666;
     stroke-width: 0.5px;
@@ -105,13 +93,26 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Процентное значение */
 .token-percent {
-    font-size: calc(var(--svg-size) * 0.022);
+    font-size: clamp(10px, 1.8vw, 35px);
     fill: #b0b0b0;
     filter: drop-shadow(0px 0px 4px rgba(255, 255, 255, 0.7));
     font-weight: bold;
     text-anchor: middle;
     dominant-baseline: middle;
     font-family: 'Poppins', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .main-text {
+        font-size: clamp(18px, 4.5vw, 50px);
+    }
+
+    .token-label {
+        font-size: clamp(14px, 3.5vw, 45px);
+    }
+
+    .token-percent {
+        font-size: clamp(12px, 3vw, 40px);
+    }
 }

@@ -38,3 +38,25 @@ html {
     max-width: 1200px;
     /* Центрирование контента */
 }
+
+.tokenomics-heading {
+    font-family: 'Montserrat', sans-serif;
+    /* Используем Montserrat */
+    font-size: 2.5rem;
+    color: #ffcc00;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 204, 0, 0.4);
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ffcc00, #ff6600);
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.tokenomics-heading:hover {
+    transform: scale(1.05);
+    color: #ffcc00;
+}

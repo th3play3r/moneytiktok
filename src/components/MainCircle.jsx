@@ -26,7 +26,7 @@ const MainCircle = () => {
 
             setSvgSize(newSize);
             document.documentElement.style.setProperty('--svg-size', `${newSize}px`);
-            document.documentElement.style.setProperty('--main-circle-radius', `${newSize * 0.1}px`);
+            document.documentElement.style.setProperty('--main-circle-radius', `${newSize * 0.13}px`);
         };
 
         updateSize();
@@ -37,7 +37,7 @@ const MainCircle = () => {
     const centerX = svgSize / 2;
     const centerY = svgSize / 2;
     const mainRadius = svgSize * 0.13;
-    const connectionOffset = mainRadius + 8;
+    const connectionOffset = mainRadius + 20;
 
     return (
         <div className="tokenization-section">
@@ -51,11 +51,11 @@ const MainCircle = () => {
                 >
                     <defs>
                         <radialGradient id="mainGradient" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stopColor="#333" />
-                            <stop offset="100%" stopColor="black" />
+                            <stop offset="0%" stopColor="#444" />
+                            <stop offset="100%" stopColor="#111" />
                         </radialGradient>
                         <filter id="shadow">
-                            <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#666" />
+                            <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#444" />
                         </filter>
                     </defs>
 
@@ -71,10 +71,10 @@ const MainCircle = () => {
 
                     <image
                         href={tiktokLogo}
-                        x={centerX - mainRadius * 0.95}
-                        y={centerY - mainRadius * 0.95}
-                        width={mainRadius * 1.9}
-                        height={mainRadius * 1.9}
+                        x={centerX - mainRadius * 0.9}
+                        y={centerY - mainRadius * 0.9}
+                        width={mainRadius * 1.8}
+                        height={mainRadius * 1.8}
                         className="main-image"
                     />
 
@@ -87,7 +87,7 @@ const MainCircle = () => {
                         transition={{ duration: 0.8, delay: 0.5 }}
                     >
                         40 000 000 000
-                        <tspan x={centerX} y={centerY + 30} className="main-text">
+                        <tspan x={centerX} y={centerY + 40} className="main-text">
                             МТОК
                         </tspan>
                     </motion.text>
@@ -98,8 +98,8 @@ const MainCircle = () => {
                         const radiusY = svgSize * 0.06;
                         const startX = centerX + Math.cos(angle) * connectionOffset;
                         const startY = centerY + Math.sin(angle) * connectionOffset;
-                        const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.1);
-                        const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.1);
+                        const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.12);
+                        const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.12);
 
                         return (
                             <React.Fragment key={token.name}>
@@ -123,10 +123,10 @@ const MainCircle = () => {
                                     animate={{ scale: 1 }}
                                     transition={{ duration: 0.5, delay: 0.6 }}
                                 />
-                                <motion.text x={endX} y={endY} className="token-label">
+                                <motion.text x={endX} y={endY - 10} className="token-label">
                                     {token.name}
                                 </motion.text>
-                                <motion.text x={endX} y={endY + 30} className="token-percent">
+                                <motion.text x={endX} y={endY + 25} className="token-percent">
                                     {token.percent}%
                                 </motion.text>
                             </React.Fragment>

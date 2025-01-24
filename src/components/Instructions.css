@@ -30,6 +30,20 @@
     transition: 0.3s ease;
 }
 
+.instruction-text h3 {
+    font-size: 1rem;
+    /* Уменьшаем размер заголовка */
+    margin-bottom: 8px;
+    /* Немного уменьшаем отступ снизу */
+}
+
+.instruction-text p {
+    font-size: 0.95rem;
+    /* Уменьшаем размер основного текста */
+    line-height: 1.4;
+    /* Поддерживаем комфортный межстрочный интервал */
+}
+
 .instruction-step:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);

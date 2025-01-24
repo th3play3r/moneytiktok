@@ -32,7 +32,7 @@ const Home = () => {
             {/* Главный круг (график) */}
             <div className="row text-center mt-5">
                 <div className="col-12">
-                    <h4 className="text-warning text-uppercase fw-bold">Токеномика $MTOK:</h4>
+                    <h4 className="text-warning text-uppercase fw-bold tokenomics-heading">Токеномика $MTOK:</h4>
                 </div>
                 <div class="w-100 d-flex justify-content-center align-items-center">
                     <MainCircle />
