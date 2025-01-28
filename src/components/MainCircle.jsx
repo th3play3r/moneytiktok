@@ -21,12 +21,19 @@ const MainCircle = () => {
             const width = window.innerWidth;
             let newSize = 1350;
 
-            if (width < 768) newSize = 700;
-            else if (width < 1024) newSize = 1000;
+            if (width < 400) {
+                newSize = 300;
+            } else if (width < 480) {
+                newSize = 400;
+            } else if (width < 768) {
+                newSize = 700;
+            } else if (width < 1024) {
+                newSize = 1000;
+            }
 
             setSvgSize(newSize);
             document.documentElement.style.setProperty('--svg-size', `${newSize}px`);
-            document.documentElement.style.setProperty('--main-circle-radius', `${newSize * 0.13}px`);
+            document.documentElement.style.setProperty('--main-circle-radius', `${newSize * 0.2}px`);
         };
 
         updateSize();
@@ -36,8 +43,8 @@ const MainCircle = () => {
 
     const centerX = svgSize / 2;
     const centerY = svgSize / 2;
-    const mainRadius = svgSize * 0.13;
-    const connectionOffset = mainRadius + 20;
+    const mainRadius = svgSize * 0.15;
+    const connectionOffset = mainRadius + svgSize * 0.05;
 
     return (
         <div className="tokenization-section">
@@ -57,6 +64,23 @@ const MainCircle = () => {
                         <filter id="shadow">
                             <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#444" />
                         </filter>
+                        <pattern
+                            id="circlePattern"
+                            patternUnits="userSpaceOnUse"
+                            x={centerX - mainRadius}
+                            y={centerY - mainRadius}
+                            width={mainRadius * 2.5}
+                            height={mainRadius * 2.5}
+                        >
+                            <image
+                                href={tiktokLogo}
+                                x="0"
+                                y="0"
+                                width={mainRadius * 2}
+                                height={mainRadius * 2}
+                                preserveAspectRatio="xMidYMid slice"
+                            />
+                        </pattern>
                     </defs>
 
                     <motion.circle
@@ -67,16 +91,9 @@ const MainCircle = () => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.6 }}
+                        fill="url(#circlePattern)" // Используем картинку как фон
                     />
 
-                    <image
-                        href={tiktokLogo}
-                        x={centerX - mainRadius * 0.9}
-                        y={centerY - mainRadius * 0.9}
-                        width={mainRadius * 1.8}
-                        height={mainRadius * 1.8}
-                        className="main-image"
-                    />
 
                     <motion.text
                         x={centerX}
@@ -87,7 +104,7 @@ const MainCircle = () => {
                         transition={{ duration: 0.8, delay: 0.5 }}
                     >
                         40 000 000 000
-                        <tspan x={centerX} y={centerY + 40} className="main-text">
+                        <tspan x={centerX} y={centerY + 30} className="main-text">
                             МТОК
                         </tspan>
                     </motion.text>
@@ -126,7 +143,7 @@ const MainCircle = () => {
                                 <motion.text x={endX} y={endY - 10} className="token-label">
                                     {token.name}
                                 </motion.text>
-                                <motion.text x={endX} y={endY + 25} className="token-percent">
+                                <motion.text x={endX} y={endY + 15} className="token-percent">
                                     {token.percent}%
                                 </motion.text>
                             </React.Fragment>
