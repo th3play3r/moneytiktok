@@ -84,7 +84,7 @@
 }
 
 .token-label {
-    font-size: clamp(1px, 2.5vw, 25px);
+    font-size: clamp(0.05px, 2vw, 25px);
     fill: #b0b0b0;
     stroke: #666;
     stroke-width: 0.5px;

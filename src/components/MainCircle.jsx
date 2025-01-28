@@ -91,9 +91,8 @@ const MainCircle = () => {
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ duration: 0.6 }}
-                        fill="url(#circlePattern)" // Используем картинку как фон
+                        fill="url(#circlePattern)"
                     />
-
 
                     <motion.text
                         x={centerX}
@@ -118,6 +117,9 @@ const MainCircle = () => {
                         const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.12);
                         const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.12);
 
+                        const labelOffset = Math.max(5, svgSize * 0.015);
+                        const percentOffset = Math.max(10, svgSize * 0.025);
+
                         return (
                             <React.Fragment key={token.name}>
                                 <motion.line
@@ -140,10 +142,18 @@ const MainCircle = () => {
                                     animate={{ scale: 1 }}
                                     transition={{ duration: 0.5, delay: 0.6 }}
                                 />
-                                <motion.text x={endX} y={endY - 10} className="token-label">
+                                <motion.text
+                                    x={endX}
+                                    y={endY - labelOffset}
+                                    className="token-label"
+                                >
                                     {token.name}
                                 </motion.text>
-                                <motion.text x={endX} y={endY + 15} className="token-percent">
+                                <motion.text
+                                    x={endX}
+                                    y={endY + percentOffset}
+                                    className="token-percent"
+                                >
                                     {token.percent}%
                                 </motion.text>
                             </React.Fragment>
