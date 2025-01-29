@@ -22,7 +22,7 @@
 
     /* Градиентная маска */
     -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 100%);
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0) 70%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 70%);
 }
 
 .responsive-svg {
@@ -62,7 +62,7 @@
 
 .token-line {
     stroke: rgba(150, 150, 150, 0.6);
-    stroke-width: 3;
+    stroke-width: 3.5;
     stroke-linecap: round;
     opacity: 0.8;
     transition: opacity 1s ease-in-out;

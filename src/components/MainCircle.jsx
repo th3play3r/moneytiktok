@@ -22,7 +22,7 @@ const MainCircle = () => {
             let newSize = 1350;
 
             if (width < 400) {
-                newSize = 300;
+                newSize = 350;
             } else if (width < 480) {
                 newSize = 400;
             } else if (width < 768) {
@@ -110,15 +110,17 @@ const MainCircle = () => {
 
                     {TOKEN_DISTRIBUTION.map((token, index) => {
                         const angle = ((index / TOKEN_DISTRIBUTION.length) * Math.PI * 2);
-                        const radiusX = svgSize * 0.08;
-                        const radiusY = svgSize * 0.06;
+                        const radiusX = svgSize * 0.09;
+                        const radiusY = svgSize * 0.07;
                         const startX = centerX + Math.cos(angle) * connectionOffset;
                         const startY = centerY + Math.sin(angle) * connectionOffset;
-                        const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.12);
-                        const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.12);
+                        const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.15);
+                        const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.15);
 
                         const labelOffset = Math.max(5, svgSize * 0.015);
                         const percentOffset = Math.max(10, svgSize * 0.025);
+
+
 
                         return (
                             <React.Fragment key={token.name}>
