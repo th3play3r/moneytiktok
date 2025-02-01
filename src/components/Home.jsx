@@ -8,13 +8,17 @@ import Instructions from './Instructions.jsx';
 import WelcomeSection from './WelcomeSection.jsx';
 import RoadmapSection from './RoadmapSection.jsx';
 import TokenInfo from './TokenInfo.jsx';
+import Layout from './Layout.jsx';
 
 // Регистрация компонентов Chart.js
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale);
 
 const Home = () => {
     return (
-        <div className="container">
+        <div className="container" style={{ marginTop: '70px' }}>
+            {/* Навигационная панель */}
+            <Layout />
+
             {/* Приветственный блок */}
             <div className="row">
                 <div className="col-12">

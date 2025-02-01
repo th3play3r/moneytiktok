@@ -1,117 +1,81 @@
-/* Основные стили для документа */
-html,
-body {
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif;
-    background-color: #222;
-    color: white;
-}
-
-/* Навигационная панель */
+/* Стили для всего навигационного бара */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #1c1c1c, #333);
-    color: white;
-    padding: 12px 0;
-    z-index: 1000;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    background-color: #1a1a1a;
+    /* Чёрный фон */
+    padding: 10px 20px;
+    /* Отступы внутри навбара */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Легкая тень для навбара */
 }
 
-/* Затемнение при скролле */
-.navbar.scrolled {
-    background: rgba(20, 20, 20, 0.9);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Контейнер навигации */
-.navbar-nav {
-    display: flex;
-    justify-content: center;
-    /* Центрируем содержимое */
-    align-items: center;
-    padding: 0 25px;
-    text-align: center;
-    /* Выравнивание текста */
-}
-
-/* Логотип */
-.navbar-logo {
+.navbar .navbar-brand {
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 2px;
-    color: #FFD700;
+    color: #fff;
+    /* Золотистый цвет для логотипа */
     text-transform: uppercase;
-    transition: color 0.3s ease;
     margin-right: auto;
-    /* Чтобы логотип остался слева */
+    /* Логотип слева */
+    transition: color 0.3s ease;
+    padding-left: 10px;
+    /* Отступ слева */
 }
 
-.navbar-logo a {
-    text-decoration: none;
-    color: inherit;
+.navbar .navbar-brand:hover {
+    color: #FFD700;
+    /* Изменение цвета логотипа при наведении */
 }
 
-/* Список ссылок */
-.navbar-links {
-    list-style: none;
-    display: flex;
-    /* Центрируем ссылки */
-    align-items: center;
-    margin: 0 auto;
-    /* Центрируем по горизонтали */
-    padding: 0;
+.navbar .navbar-brand:focus {
+    outline: none;
+    /* Убираем обводку при фокусе */
 }
 
-/* Элементы списка */
-.navbar-links li {
-    margin: 0 15px;
+/* Стили для кнопок на навбаре */
+/* Стили для кнопок на навбаре */
+.navbar button {
+    background-color: #000;
+    /* Чёрный фон */
+    color: #fff;
+    /* Белый текст */
+    border: 2px solid #fff;
+    /* Белая граница */
+    border-radius: 20px;
+    /* Увеличиваем радиус скругления углов */
+    padding: 10px 15px;
+    /* Увеличиваем отступы внутри кнопки */
+    font-size: 15px;
+    /* Увеличиваем размер шрифта */
+    font-weight: bold;
+    /* Делаем текст жирным */
+    transition: all 0.3s ease;
+    /* Плавный переход */
 }
 
-/* Ссылки */
-.navbar-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 14px;
-    border-radius: 5px;
-    transition: background 0.3s ease, transform 0.2s ease;
+.navbar button:hover {
+    background-color: #fff;
+    /* Белый фон при наведении */
+    color: #000;
+    /* Чёрный текст при наведении */
+    border-color: #000;
+    /* Чёрная граница при наведении */
 }
 
-/* Эффекты при наведении */
-.navbar-links a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.1);
+.navbar button:focus {
+    outline: none;
+    /* Убираем обводку при фокусе */
 }
 
-/* Добавляем отступ сверху, чтобы контент не перекрывался */
-body {
-    padding-top: 70px;
-}
-
-/* 📱 Адаптивность (для мобильных устройств) */
-@media (max-width: 768px) {
-    .navbar-nav {
-        flex-direction: column;
+/* Стили для мобильной версии */
+@media (max-width: 767px) {
+    .navbar {
+        padding: 10px;
+        /* Уменьшаем отступы для мобильной версии */
     }
 
-    .navbar-links {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .navbar-links li {
-        margin: 10px 0;
-    }
-
-    .navbar-logo {
+    .navbar .navbar-brand {
         font-size: 20px;
-    }
-
-    .navbar-links a {
-        font-size: 16px;
+        /* Уменьшаем размер шрифта для логотипа */
     }
 }

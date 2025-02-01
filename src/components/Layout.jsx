@@ -1,16 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Layout.css"; // Подключаем стили
-
+// Layout.jsx
+import React from 'react';
+import { Navbar, Button } from 'react-bootstrap'; // Импортируем необходимые компоненты из react-bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'; // Подключаем стили Bootstrap
+import "./Layout.css";
 const Layout = () => {
     return (
-        <header className="navbar">
-            <nav className="navbar-nav">
-                <ul className="navbar-links">
-                    <li className="navbar-logo">MoneyTikTok</li>
-                </ul>
-            </nav>
-        </header>
+        <Navbar fixed="top"> {/* Используем fixed="top" для фиксации панели */}
+            <Navbar.Brand className="navbar-logo" >MoneyTikTok</Navbar.Brand>
+            <div className="ml-auto">
+                <Button
+                    variant="outline-light"
+                    onClick={() => window.location.href = "https://t.me/MoneyTikTokCoin_bot"} // Укажи нужный URL
+                >
+                    Играть
+                </Button>
+            </div>
+        </Navbar>
     );
 };
 

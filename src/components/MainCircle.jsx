@@ -44,17 +44,24 @@ const MainCircle = () => {
     const centerX = svgSize / 2;
     const centerY = svgSize / 2;
     const mainRadius = svgSize * 0.15;
-    const connectionOffset = mainRadius + svgSize * 0.05;
 
     return (
         <div className="tokenization-section">
             <div className="token-chart">
-                <svg
+                <motion.svg
                     viewBox={`0 0 ${svgSize} ${svgSize}`}
                     width="100%"
                     height="auto"
                     preserveAspectRatio="xMidYMid meet"
                     className="responsive-svg"
+                    animate={{
+                        rotate: 360, // Ротация по оси
+                    }}
+                    transition={{
+                        duration: 20, // Длительность одного оборота
+                        repeat: Infinity, // Бесконечное повторение
+                        ease: "linear", // Линейная скорость
+                    }}
                 >
                     <defs>
                         <radialGradient id="mainGradient" cx="50%" cy="50%" r="50%">
@@ -64,6 +71,7 @@ const MainCircle = () => {
                         <filter id="shadow">
                             <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#444" />
                         </filter>
+
                         <pattern
                             id="circlePattern"
                             patternUnits="userSpaceOnUse"
@@ -83,6 +91,7 @@ const MainCircle = () => {
                         </pattern>
                     </defs>
 
+                    {/* Центральный круг не вращается */}
                     <motion.circle
                         cx={centerX}
                         cy={centerY}
@@ -96,31 +105,42 @@ const MainCircle = () => {
 
                     <motion.text
                         x={centerX}
-                        y={centerY - 10}
+                        y={`${centerY - centerY * 0.05}`} // Смещение текста на 5%
                         className="main-text"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.8, delay: 0.5 }}
+                        textAnchor="middle"
                     >
-                        40 000 000 000
-                        <tspan x={centerX} y={centerY + 30} className="main-text">
-                            МТОК
-                        </tspan>
+                        <tspan>40 млрд</tspan>
+                    </motion.text>
+
+                    <motion.text
+                        x={centerX}
+                        y={`${centerY + centerY * 0.05}`} // То же для нижнего текста
+                        className="main-text"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        textAnchor="middle"
+                    >
+                        <tspan>$МТОК</tspan>
                     </motion.text>
 
                     {TOKEN_DISTRIBUTION.map((token, index) => {
                         const angle = ((index / TOKEN_DISTRIBUTION.length) * Math.PI * 2);
-                        const radiusX = svgSize * 0.09;
-                        const radiusY = svgSize * 0.07;
-                        const startX = centerX + Math.cos(angle) * connectionOffset;
-                        const startY = centerY + Math.sin(angle) * connectionOffset;
-                        const endX = centerX + Math.cos(angle) * (connectionOffset + svgSize * 0.15);
-                        const endY = centerY + Math.sin(angle) * (connectionOffset + svgSize * 0.15);
 
-                        const labelOffset = Math.max(5, svgSize * 0.015);
-                        const percentOffset = Math.max(10, svgSize * 0.025);
+                        // Стартовые координаты — граница главного круга
+                        const startX = centerX + Math.cos(angle) * mainRadius;
+                        const startY = centerY + Math.sin(angle) * mainRadius;
 
+                        // Конечные координаты — отступаем дальше
+                        const endX = centerX + Math.cos(angle) * (mainRadius + svgSize * 0.15);
+                        const endY = centerY + Math.sin(angle) * (mainRadius + svgSize * 0.15);
 
+                        // Уменьшаем размеры маленьких кругов
+                        const radiusX = svgSize * 0.07;  // Можно уменьшить до 5% от размера экрана
+                        const radiusY = svgSize * 0.05;  // Или до 4%
 
                         return (
                             <React.Fragment key={token.name}>
@@ -134,26 +154,28 @@ const MainCircle = () => {
                                     animate={{ pathLength: 1 }}
                                     transition={{ duration: 0.8, delay: 0.5 }}
                                 />
+                                {/* Маленький круг, не вращающийся */}
                                 <motion.ellipse
                                     cx={endX}
                                     cy={endY}
-                                    rx={radiusX}
-                                    ry={radiusY}
+                                    rx={radiusX}  // Уменьшенный радиус по X
+                                    ry={radiusY}  // Уменьшенный радиус по Y
                                     className="sub-circle"
                                     initial={{ scale: 0 }}
                                     animate={{ scale: 1 }}
                                     transition={{ duration: 0.5, delay: 0.6 }}
                                 />
+                                {/* Текст, не вращающийся */}
                                 <motion.text
                                     x={endX}
-                                    y={endY - labelOffset}
+                                    y={endY - Math.max(5, svgSize * 0.015)}
                                     className="token-label"
                                 >
                                     {token.name}
                                 </motion.text>
                                 <motion.text
                                     x={endX}
-                                    y={endY + percentOffset}
+                                    y={endY + Math.max(10, svgSize * 0.025)}
                                     className="token-percent"
                                 >
                                     {token.percent}%
@@ -161,7 +183,8 @@ const MainCircle = () => {
                             </React.Fragment>
                         );
                     })}
-                </svg>
+
+                </motion.svg>
             </div>
         </div>
     );

@@ -9,6 +9,12 @@ const roadmapData = [
     { title: "Присейл токена", status: "future", position: "70%" },
     { title: "Доступ к майнингу и аирдроп", status: "future", position: "90%" }
 ];
+const stickers = document.querySelectorAll('.roadmap-sticker');
+
+stickers.forEach(sticker => {
+    const delay = Math.random() * 2 + 's'; // Случайная задержка от 0 до 2 секунд
+    sticker.style.animationDelay = delay;
+});
 
 const RoadmapSection = () => {
     return (

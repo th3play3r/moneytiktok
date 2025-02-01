@@ -32,13 +32,52 @@
 }
 
 /* Стикеры на линии */
+@keyframes float {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+        /* Поднимается */
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
 .roadmap-sticker {
     position: absolute;
     top: -20px;
     font-size: 35px;
     color: white;
     transform: translateX(-50%);
+    animation: float 3s infinite ease-in-out;
 }
+
+/* Разные случайные задержки с использованием :nth-child() */
+.roadmap-sticker:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.roadmap-sticker:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.roadmap-sticker:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.roadmap-sticker:nth-child(4) {
+    animation-delay: 1.4s;
+}
+
+.roadmap-sticker:nth-child(5) {
+    animation-delay: 1.8s;
+}
+
+/* И так далее для других элементов... */
 
 /* Иконки для каждого состояния */
 .roadmap-step.completed .roadmap-sticker .fa-check {
