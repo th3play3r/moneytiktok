@@ -69,6 +69,18 @@ const MainCircle = () => {
                         animate={isInView ? { scale: 1, rotate: 1080 } : {}}
                         transition={{ duration: 2, ease: "easeOut" }}
                     />
+                    <motion.g
+                        initial={{ opacity: 0, rotate: 0 }}
+                        animate={{ opacity: 1, rotate: 1080 }}
+                        transition={{ duration: 2, ease: "easeOut" }}
+                    >
+                        <text x={centerX} y={centerY - centerY * 0.05} className="main-text" textAnchor="middle">
+                            <tspan>40 млрд</tspan>
+                        </text>
+                        <text x={centerX} y={centerY + centerY * 0.05} className="main-text" textAnchor="middle">
+                            <tspan>$МТОК</tspan>
+                        </text>
+                    </motion.g>
 
                     {isInView && (
                         TOKEN_DISTRIBUTION.map((token, index) => {
