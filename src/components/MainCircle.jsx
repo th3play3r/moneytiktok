@@ -118,7 +118,7 @@ const MainCircle = () => {
                                     />
                                     <motion.text
                                         x={endX}
-                                        y={endY - 15}
+                                        y={endY - svgSize * 0.015} // Динамический верхний отступ
                                         className="token-label"
                                         initial={{ opacity: 0, scale: 0 }}
                                         animate={{ opacity: 1, scale: 1 }}
@@ -126,10 +126,10 @@ const MainCircle = () => {
                                     >
                                         {token.name}
                                     </motion.text>
-                                    {/* Процент */}
+
                                     <motion.text
                                         x={endX}
-                                        y={endY + 15}
+                                        y={endY + svgSize * 0.015} // Динамический нижний отступ
                                         className="token-percent"
                                         initial={{ opacity: 0, scale: 0 }}
                                         animate={{ opacity: 1, scale: 1.1 }}
@@ -137,6 +137,7 @@ const MainCircle = () => {
                                     >
                                         {token.percent}%
                                     </motion.text>
+
                                 </React.Fragment>
                             );
                         })
