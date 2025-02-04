@@ -69,18 +69,42 @@ const MainCircle = () => {
                         animate={isInView ? { scale: 1, rotate: 1080 } : {}}
                         transition={{ duration: 2, ease: "easeOut" }}
                     />
+
                     <motion.g
-                        initial={{ opacity: 0, rotate: 0 }}
-                        animate={{ opacity: 1, rotate: 1080 }}
-                        transition={{ duration: 2, ease: "easeOut" }}
+                        initial={{ scale: 0, rotate: 0 }}
+                        animate={isInView ? { scale: 1, rotate: 360 } : {}}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        style={{ transformOrigin: `${centerX}px ${centerY}px` }} // Вращение вокруг центра
                     >
-                        <text x={centerX} y={centerY - centerY * 0.05} className="main-text" textAnchor="middle">
+                        <motion.text
+                            x={centerX}
+                            y={centerY - svgSize * 0.02} // Меньший радиус
+                            className="main-text"
+                            textAnchor="middle"
+                            fill="white"
+                            fontSize="1.2em"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1, delay: 1 }}
+                        >
                             <tspan>40 млрд</tspan>
-                        </text>
-                        <text x={centerX} y={centerY + centerY * 0.05} className="main-text" textAnchor="middle">
+                        </motion.text>
+
+                        <motion.text
+                            x={centerX}
+                            y={centerY + svgSize * 0.03} // Тоже ближе к центру
+                            className="main-text"
+                            textAnchor="middle"
+                            fontSize="1.2em"
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1, delay: 1.2 }}
+                        >
                             <tspan>$МТОК</tspan>
-                        </text>
+                        </motion.text>
                     </motion.g>
+
+
 
                     {isInView && (
                         TOKEN_DISTRIBUTION.map((token, index) => {
@@ -113,7 +137,7 @@ const MainCircle = () => {
                                         ry={radiusY}
                                         className="sub-circle"
                                         initial={{ opacity: 0, scale: 0 }}
-                                        animate={{ opacity: 1, scale: 1 }}
+                                        animate={{ opacity: 1, scale: 1.3 }}
                                         transition={{ duration: 0.5, delay: 2.4 }}
                                     />
                                     <motion.text
