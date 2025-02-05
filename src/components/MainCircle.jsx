@@ -2,18 +2,22 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import "./MainCircle.css";
 import tiktokLogo from "/assets/tiktok-logo.png";
+import { useTranslation } from "react-i18next";
 
-const TOKEN_DISTRIBUTION = [
-    { name: "Майнеры", percent: 65 },
-    { name: "Амбассадоры", percent: 3.5 },
-    { name: "Команда", percent: 1 },
-    { name: "Предпродажа", percent: 5 },
-    { name: "Проект", percent: 4 },
-    { name: "Ликвидность", percent: 14 },
-    { name: "Маркетинг", percent: 7.5 }
-];
+
 
 const MainCircle = () => {
+    const { t } = useTranslation();
+    const TOKEN_DISTRIBUTION = [
+
+        { name: t("TK1"), percent: 65 },
+        { name: t("TK2"), percent: 3.5 },
+        { name: t("TK3"), percent: 1 },
+        { name: t("TK4"), percent: 5 },
+        { name: t("TK5"), percent: 4 },
+        { name: t("TK6"), percent: 14 },
+        { name: t("TK7"), percent: 7.5 }
+    ];
     const [svgSize, setSvgSize] = useState(1350);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -87,7 +91,7 @@ const MainCircle = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 1, delay: 1 }}
                         >
-                            <tspan>40 млрд</tspan>
+                            <tspan>{t("B")}</tspan>
                         </motion.text>
 
                         <motion.text

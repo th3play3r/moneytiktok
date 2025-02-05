@@ -1,14 +1,8 @@
 import React from "react";
 import "./RoadmapSection.css"; // Подключаем стили
 import 'bootstrap/dist/css/bootstrap.min.css'; // Подключаем стили Bootstrap
+import { useTranslation } from "react-i18next";
 
-const roadmapData = [
-    { title: "Запуск миниап", status: "completed", position: "10%" },
-    { title: "Набор аудитории", status: "in-progress", position: "30%" },
-    { title: "Поиск партнёров", status: "in-progress", position: "50%" },
-    { title: "Присейл токена", status: "future", position: "70%" },
-    { title: "Доступ к майнингу и аирдроп", status: "future", position: "90%" }
-];
 const stickers = document.querySelectorAll('.roadmap-sticker');
 
 stickers.forEach(sticker => {
@@ -17,9 +11,18 @@ stickers.forEach(sticker => {
 });
 
 const RoadmapSection = () => {
+    const { t } = useTranslation();
+    const roadmapData = [
+        { title: t("RM1"), status: "completed", position: "10%" },
+        { title: t("RM2"), status: "in-progress", position: "30%" },
+        { title: t("RM3"), status: "in-progress", position: "50%" },
+        { title: t("RM4"), status: "future", position: "70%" },
+        { title: t("RM5"), status: "future", position: "90%" }
+    ];
+
     return (
         <div className="roadmap-section container">
-            <h2 className="text-center mb-4">Дорожная карта</h2>
+            <h2 className="text-center mb-4">{t("RoadMapLabel")}</h2>
             <div className="roadmap-line position-relative">
                 {roadmapData.map((step, index) => (
                     <React.Fragment key={index}>

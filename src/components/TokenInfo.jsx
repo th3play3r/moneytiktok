@@ -1,13 +1,14 @@
 import React from "react";
 import "./TokenInfo.css"; // Файл для стилизации
+import { useTranslation } from "react-i18next";
 
 const TokenInfo = () => {
+    const { t } = useTranslation();
     return (
         <section className="token-info">
-            <h2>Токен $MTOK</h2>
+            <h2>{t("Token")}</h2>
             <p>
-                <strong>$MTOK</strong> — это основной токен проекта MoneyTikTok, добываемый только в официальном приложении.
-                Данный токен представлен как биржевой и будет торговаться на определённых платформах!
+                <strong>$MTOK</strong> {t("Info")}
             </p>
         </section>
     );

@@ -1,7 +1,9 @@
 import React from "react";
 import "./WelcomeSection.css"; // Подключаем стили
+import { useTranslation } from "react-i18next";
 
 const WelcomeSection = () => {
+    const { t } = useTranslation();
     const scrollToInstructions = () => {
         document.getElementById("instructions")?.scrollIntoView({
             behavior: "smooth",
@@ -10,14 +12,12 @@ const WelcomeSection = () => {
 
     return (
         <section className="welcome-section">
-            <h1>Добро пожаловать в MoneyTikTok!</h1>
+            <h1>{t("Hello")}</h1>
             <p>
-                Это простое и увлекательное мини-приложение, которое поможет вам
-                лучше понять основы взаимодействия с криптовалютами. Нажмите кнопку ниже,
-                чтобы узнать, как играть.
+                {t("SubHello")}
             </p>
             <button className="scroll-button" onClick={scrollToInstructions}>
-                Как играть
+                {t("HTP")}
             </button>
         </section>
     );

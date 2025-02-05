@@ -9,11 +9,15 @@ import WelcomeSection from './WelcomeSection.jsx';
 import RoadmapSection from './RoadmapSection.jsx';
 import TokenInfo from './TokenInfo.jsx';
 import Layout from './Layout.jsx';
+import LanguageSwitcher from './LanguageSwitcher.jsx';
+import { useTranslation } from "react-i18next";
 
 // Регистрация компонентов Chart.js
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale);
 
 const Home = () => {
+    const { t } = useTranslation();
+
     return (
         <div className="container" style={{ marginTop: '70px' }}>
             {/* Навигационная панель */}
@@ -36,7 +40,7 @@ const Home = () => {
             {/* Главный круг (график) */}
             <div className="row text-center mt-5">
                 <div className="col-12">
-                    <h4 className="text-warning text-uppercase fw-bold tokenomics-heading">Токеномика $MTOK:</h4>
+                    <h4 className="text-warning text-uppercase fw-bold tokenomics-heading">{t("Tokenomic")}</h4>
                 </div>
                 <div class="w-100 d-flex justify-content-center align-items-center">
                     <MainCircle />
@@ -56,6 +60,15 @@ const Home = () => {
                     <RoadmapSection />
                 </div>
             </div>
+
+            {/* Дорожная карта */}
+            <div className="row mt-5">
+                <div className="col-12">
+                    <LanguageSwitcher />
+                </div>
+            </div>
+
+
         </div>
     );
 };
