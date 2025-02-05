@@ -16,6 +16,7 @@ const LanguageSwitcher = () => {
         setLanguage(lang);
         localStorage.setItem("language", lang);
         setIsOpen(false);
+        window.location.reload();
     };
 
     return (
